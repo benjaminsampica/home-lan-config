@@ -53,7 +53,7 @@ Clonezilla is a powerful, free, open-source disk imaging tool ideal for cloning 
 4. Select the stored image from the external drive or network location.
 5. Write the image to the internal disk (Disk 0).
 6. Once complete, remove USBs and reboot.
-🌀 Repeat for each of the 7 LAN clients.
+7. 🌀 Repeat for each of the 7 LAN clients.
 
 On first boot, each PC will go through the Windows OOBE setup screen, and your preconfigured local admin (`LANAdmin`) will still be present.
 
