@@ -56,3 +56,7 @@ Memory: TEAMGROUP T-Force Delta RGB 32 GB (2 x 16 GB) DDR5-6000 CL38 Memory
 ## Cable Running
 - https://a.co/d/hUSbbNw
 - https://a.co/d/92UHoBN
+
+## Networking
+- Reusing what i currently have
+- OR 2x https://a.co/d/8hepNnN
