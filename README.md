@@ -115,7 +115,7 @@ If you set **only** `192.168.1.100` and the cache is offline, all internet acces
 1. Download [PSExec](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec) and extract to `C:\Tools\PsExec`.
 2. Edit `push_sync.ps1`:
    - Update the PC names (e.g., `PC-01` to `PC-08`)
-   - Replace `$adminUser` and `$$adminPass` with the credentials you configured on the clients via `master-client-machine-setup.ps1`.
+   - Replace `$adminUser` and `$adminPass` with the credentials you configured on the clients via `master-client-machine-setup.ps1`.
    - Confirm the share path is correct.
 3. Run `push_sync.ps1` from your server to remotely sync all client machines using PsExec.
 
@@ -123,7 +123,7 @@ If you set **only** `192.168.1.100` and the cache is offline, all internet acces
 
 When it’s time to sync:
 
-1. Ensure every PC is powered on, logged in, and connected to the network.
-2. Update `games.json` (add/remove games)
+1. Ensure every client PC is powered on, logged in, and connected to the network.
+2. Update `games.jsonc` (add/remove games)
 3. Run `sync_games.ps1` on the server to cache new data
-4. Run `push_sync.ps1` to push changes to all PCs
+4. Run `push_sync.ps1` on the server to push changes to all PCs
