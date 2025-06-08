@@ -1,6 +1,6 @@
 # 🖥️ LAN Gaming Setup – Centralized Sync & Game Deployment
 
-This repo contains a step-by-step guide and scripts to set up and manage 8 LAN Windows 11 gaming PCs using a single “master” server. With this system, you’ll be able to:
+This repo contains a step-by-step guide and scripts to set up and manage LAN Windows 11 gaming PCs using a single “master” server. With this system, you’ll be able to:
 
 - Deploy Windows 11 to all machines from one image
 - Install or uninstall Steam games via a shared manifest
