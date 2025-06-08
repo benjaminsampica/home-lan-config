@@ -19,9 +19,7 @@ Memory: TEAMGROUP T-Force Delta RGB 32 GB (2 x 16 GB) DDR5-6000 CL38 Memory
 
 ## 🔌 Power Management
 
-### [GE 6‑Outlet Surge Protector with 10 Ft Extension Cord](https://www.amazon.com/GE-Outlet-Protector-Extension-14092/dp/B00DOMYL24)
-**Features:** 800 J surge protection, flat plug, twist‑to‑close safety covers.  
-**Benefits:** Extended 10 ft cord for flexible placement; flat plug keeps furniture close to walls.
+- (2x) 8 outlet power strip - https://a.co/d/gfkk35Q
 
 ---
 
