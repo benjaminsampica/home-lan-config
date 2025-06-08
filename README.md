@@ -14,7 +14,6 @@ This repo contains a step-by-step guide and scripts to set up and manage 8 LAN W
 2. Configure it fully:
    - Disable Cortana, News/Interests, etc.
    - Install all drivers and updates
-   - Create a local user (e.g., `LANAdmin`)
    - Install Steam (but don’t log in)
    - Create folder: `C:\SteamGames`
    - Install any default tools (e.g., Chrome, MSI Afterburner)
