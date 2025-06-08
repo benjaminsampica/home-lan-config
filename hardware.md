@@ -20,6 +20,7 @@ Memory: TEAMGROUP T-Force Delta RGB 32 GB (2 x 16 GB) DDR5-6000 CL38 Memory
 ## 🔌 Power Management
 
 - (2x) 10 outlet power strip - https://a.co/d/7Z86lYM
+- 50ft 12 gauge extension cord - https://a.co/d/f9Kacm1
 
 ---
 
