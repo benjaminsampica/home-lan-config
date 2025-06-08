@@ -19,22 +19,43 @@ This repo contains a step-by-step guide and scripts to set up and manage LAN Win
    - Install any default tools (e.g., Chrome, MSI Afterburner)
 3. Create a shared local admin account on the PC and prepare for imaging by running `master-client-machine-setup.ps1`.
 
-## 📦 STEP 2 – Clone the Image to the Other PCs
+## 📦 STEP 2 – Clone the Image to the Other PCs (Using Clonezilla)
 
-**Recommended Tool: [Macrium Reflect Free](https://www.macrium.com/reflectfree)**
+**Recommended Tool: [Clonezilla Live](https://clonezilla.org/clonezilla-live.php)**
 
-### On the Master PC:
-1. Create an image of Disk 0 using Macrium.
-2. Save it to an external SSD or HDD.
-3. Create a Macrium Rescue USB (via "Create Rescue Media").
+Clonezilla is a powerful, free, open-source disk imaging tool ideal for cloning identical Windows 11 PCs.
 
-### On the Other PCs:
-1. Plug in the Rescue USB + the image drive.
-2. Boot to USB (tap `F12` or `DEL` during startup).
-3. Restore the image to the internal disk.
-4. Reboot and complete Windows setup.
+---
 
-> Repeat for all clients.
+### 🛠️ On the Master PC
+
+1. Download **Clonezilla Live ISO** and create a bootable USB using [Rufus](https://rufus.ie/).
+2. Boot the master PC to Clonezilla via USB (tap `F12`, `DEL`, or your BIOS boot key).
+3. Choose:
+   ```
+   device-image (to create an image)
+   ```
+4. Save the image to:
+   - An external USB SSD/HDD, **or**
+   - A network share (e.g., an SMB/NFS server on your LAN)
+5. Reboot the computer to Windows for later steps.
+
+---
+
+### 💻 On Each Client PC:
+
+1. Plug in the **Clonezilla USB** and the **external image drive** (or connect to the image share).
+2. Boot to Clonezilla.
+3. Choose:
+   ```
+   device-image (to restore an image)
+   ```
+4. Select the stored image from the external drive or network location.
+5. Write the image to the internal disk (Disk 0).
+6. Once complete, remove USBs and reboot.
+🌀 Repeat for each of the 7 LAN clients.
+
+On first boot, each PC will go through the Windows OOBE setup screen, and your preconfigured local admin (`LANAdmin`) will still be present.
 
 ## 🌐 STEP 3 – Setup Shared Folder on Your Server
 
@@ -47,7 +68,7 @@ On your server (not a client machine).
    - Right-click > Properties > Sharing > Share > "Everyone" (read/write)
    - Example network path: `\\192.168.1.100\sync`
 
-## 🔁 STEP 4 – Configure Game Sync System
+## 🔁 STEP 4 – Configure Sync
 
 1. Install [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD) on your server:
    - Extract to: `C:\SteamTools\SteamCMD`
