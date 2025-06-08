@@ -1,5 +1,6 @@
 ## Desks (x2)
-- https://www.homedepot.com/p/Hampton-Bay-8-ft-L-x-25-in-D-Finished-Engineered-Oak-Butcher-Block-Countertop-PWDBAB386352490/318686097
+- Table - [96" Birch Countertop](https://www.homedepot.com/p/Hampton-Bay-8-ft-L-x-25-in-D-Finished-Engineered-Birch-Butcher-Block-Countertop-PWBRAB386352490/318686095)
+- Legs - [U-Shaped Metal Legs](https://www.amazon.com/Topsair-16-Furniture-Adjustable-Nightstand/dp/B08L93FGPN/ref=sr_1_6?crid=1K4XVUERT2W3U&dib=eyJ2IjoiMSJ9.ts2yGze41HEj-KB357ldc7u6PUkIRfgc-r8V6VfywByfoKNcuV2VtXOJ9Qdd2KFChs4g0blqrmZ3e6wrwKP0cIUX0h1Kiq7TP9qZ6i3lfAlbuNd8bdT9OOASLS5yBb5syR9b-PrxtNfpwAcBBU-hYBsV27koEIefRr7bUYIMUV_udT_yiPQV_nwm4gnTuia3XSZWuxVLIGEkhEoDg6tlV7YEcfpPEinaGlsR8Ofwpu74IQ0s35MLZxb9ncEO8hxbFux2-K1gnqqBB4ISJ45cX53ylUX86ON-1R2mcOFyNmU.EPtRp599dMNqpW9hzOs6eHL3Gx6tcnr9GE7xKstJehA&dib_tag=se&keywords=U%2Bshaped%2Bmetal%2Blegs&qid=1749350663&sprefix=u%2Bshaped%2Bmetal%2Bleg%2Caps%2C115&sr=8-6&th=1)
 
 ## Computers (x8)
 
