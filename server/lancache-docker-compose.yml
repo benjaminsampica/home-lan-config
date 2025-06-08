@@ -1,0 +1,24 @@
+version: '2.2'
+
+services:
+  dns:
+    image: lancachenet/lancache-dns:latest
+    container_name: lancache-dns
+    environment:
+      - USE_GENERIC_CACHE=true
+    ports:
+      - "53:53/udp"
+    restart: unless-stopped
+
+  monolithic:
+    image: lancachenet/monolithic:latest
+    container_name: lancache
+    environment:
+      - TZ=America/Chicago
+      - LANCACHE_IP=192.168.1.100
+    ports:
+      - "80:80"
+    volumes:
+      - ./lancache:/data/cache
+      - ./lancache-logs:/data/logs
+    restart: unless-stopped
