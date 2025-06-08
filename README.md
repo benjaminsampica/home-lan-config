@@ -8,14 +8,6 @@ This repo contains a step-by-step guide and scripts to set up and manage 8 LAN W
 - Host LAN game servers
 - Keep everything in sync with a monthly update process
 
-## 🧰 Included Files
-
-| File              | Purpose                                                         |
-|-------------------|-----------------------------------------------------------------|
-| `games.json`      | Your source of truth – list of game AppIDs to install/uninstall |
-| `sync_games.ps1`  | Script run on each client to read `games.json` and apply it     |
-| `push_sync.ps1`   | Master batch file to trigger `sync_games.ps1` on all 8 clients  |
-
 ## 🧱 STEP 1 – Prep the First Client PC
 
 1. Install **Windows 11 Pro** on one of the LAN PCs.
