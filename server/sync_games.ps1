@@ -1,5 +1,5 @@
 $steamcmd = "C:\SteamTools\SteamCMD\steamcmd.exe"
-$manifest = Get-Content "C:\SteamTools\games.json" | ConvertFrom-Json
+$manifest = Get-Content "C:\SteamTools\games.jsonc" | ConvertFrom-Json
 $user = "your_steam_username"
 $pass = "your_password"
 
