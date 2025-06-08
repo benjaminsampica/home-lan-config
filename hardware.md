@@ -54,3 +54,6 @@ Memory: TEAMGROUP T-Force Delta RGB 32 GB (2 x 16 GB) DDR5-6000 CL38 Memory
 ### [Brother Cable Flags – Wire Marking Labels (TZe-compatible)](https://www.amazon.com/Genuine-Brother-Flexible-TZe-Tapes/dp/B01M19YGM6)
 **Features:** Black-on-white thermal-transfer tape, 1″ width.  
 **Benefits:** Creates durable, professional cable labels—preferred for cable flags.
+
+## USB Hubs
+- https://a.co/d/hUSbbNw
