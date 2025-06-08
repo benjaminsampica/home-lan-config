@@ -6,7 +6,7 @@ This repo contains a step-by-step guide and scripts to set up and manage LAN Win
 - Install or uninstall Steam games via a shared manifest
 - Push those game changes out to all 8 clients in one click
 - Host LAN game servers
-- Keep everything in sync with a monthly update process
+- Keep everything in sync with an automated update process
 
 ## 🧱 STEP 1 – Prep the First Client PC
 
