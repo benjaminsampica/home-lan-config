@@ -61,3 +61,6 @@ Memory: TEAMGROUP T-Force Delta RGB 32 GB (2 x 16 GB) DDR5-6000 CL38 Memory
 ## Networking
 - Reusing what i currently have
 - OR 2x https://a.co/d/8hepNnN
+
+## OS
+- Windows 11 pro https://buydigital.fun/shop/windows-11-pro-oem-multilingual-lifetime-1-user-1-pc-global-key/
