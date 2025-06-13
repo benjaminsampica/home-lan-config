@@ -1,150 +1,124 @@
-# 🖥️ LAN Gaming Setup – Centralized Sync & Game Deployment
+# 🖥️ LAN Gaming Setup – PXE Imaging & Turnkey Game Deployment
 
-This repo contains a step-by-step guide and scripts to set up and manage LAN Windows 11 gaming PCs using a single “master” server. With this system, you’ll be able to:
+This guide walks you through setting up a **completely turnkey LAN gaming environment** using:
 
-- Deploy Windows 11 to all machines from one image
-- Install or uninstall Steam games via a shared manifest
-- Push those game changes out to all 8 clients in one click
-- Host LAN game servers
-- Keep everything in sync with an automated update process
-
-## 🧱 STEP 1 – Prep the First Client PC
-
-1. Install **Windows 11 Pro** on one of the LAN PCs.
-2. Configure it fully:
-   - Disable Cortana, News/Interests, etc.
-   - Install all drivers and updates
-   - Install Steam (but don’t log in)
-   - Create folder: `C:\SteamGames`
-   - Install any default tools (e.g., Chrome, MSI Afterburner)
-3. Create a shared local admin account on the PC and prepare for imaging by running `master-client-machine-setup.ps1`.
-
-## 📦 STEP 2 – Clone the Image to the Other PCs (Using Clonezilla)
-
-**Recommended Tool: [Clonezilla Live](https://clonezilla.org/clonezilla-live.php)**
-
-Clonezilla is a powerful, free, open-source disk imaging tool ideal for cloning identical Windows 11 PCs.
+- A single master image (with Windows 11 + Steam games preinstalled)  
+- PXE boot + Clonezilla for monthly reimaging  
+- Auto-login into a local admin account  
+- No OOBE, no setup screens, just **power on and game**
 
 ---
 
-### 🛠️ On the Master PC
+## 🔧 Goal
 
-1. Download **Clonezilla Live ISO** and create a bootable USB using [Rufus](https://rufus.ie/).
-2. Boot the master PC to Clonezilla via USB (tap `F12`, `DEL`, or your BIOS boot key).
-3. Choose:
-   ```
-   device-image (to create an image)
-   ```
-4. Save the image to:
-   - An external USB SSD/HDD, **or**
-   - A network share (e.g., an SMB/NFS server on your LAN)
-5. Reboot the computer to Windows for later steps.
+You power on a LAN PC → it auto-boots into Windows → logs into a preconfigured admin account → games are installed and ready.
 
 ---
 
-### 💻 On Each Client PC:
+## 🧱 STEP 1 – Set Up the Master PC
 
-1. Plug in the **Clonezilla USB** and the **external image drive** (or connect to the image share).
-2. Boot to Clonezilla.
-3. Choose:
+1. **Install Windows 11 Pro**
+2. **Create a Local Admin User**
+
+   ```powershell
+   net user LANUser SuperSecret123 /add
+   net localgroup Administrators LANUser /add
    ```
-   device-image (to restore an image)
+
+3. **Enable Auto-Login for That User**
+
+   ```powershell
+   $regPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
+   Set-ItemProperty -Path $regPath -Name "DefaultUserName" -Value "LANUser"
+   Set-ItemProperty -Path $regPath -Name "DefaultPassword" -Value "SuperSecret123"
+   Set-ItemProperty -Path $regPath -Name "AutoAdminLogon" -Value "1"
    ```
-4. Select the stored image from the external drive or network location.
-5. Write the image to the internal disk (Disk 0).
-6. Once complete, remove USBs and reboot.
-7. 🌀 Repeat for each of the 7 LAN clients.
 
-On first boot, each PC will go through the Windows OOBE setup screen, and your preconfigured local admin (`LANAdmin`) will still be present.
+4. **Install Steam and Games**
+   - Install Steam
+   - Set the library to `C:\SteamGames`
+   - Download and install all LAN games you want included
 
-## 🌐 STEP 3 – Setup Shared Folder on Your Server
+5. **Do Any Final Tuning**
+   - Set desktop wallpaper, power settings, disable updates
+   - Install any software you want preconfigured
 
-On your server (not a client machine).
-1. Create a folder: `C:\SteamTools`
-2. Inside it, place:
-   - `games.json`
-   - `sync_games.ps1`
-3. Share this folder over the network:
-   - Right-click > Properties > Sharing > Share > "Everyone" (read/write)
-   - Example network path: `\\192.168.1.100\sync`
+---
 
-## 🔁 STEP 4 – Configure Sync
+## 🧼 STEP 2 – Generalize the Image (Skip OOBE)
 
-1. Install [SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD) on your server:
-   - Extract to: `C:\SteamTools\SteamCMD`
-2. Edit `games.jsonc` with the AppIDs to install or uninstall.
-3. Run `sync_games.ps1` on the server to download and cache all game data into `C:\SteamGames`.
+Open PowerShell **as administrator** and run:
 
-## 🌐 STEP 5 - LAN Cache Setup with lancache.net
-
-To ensure games are only downloaded once and then served locally to all other PCs, this setup uses [lancache.net](https://lancache.net) on the server.
-
-### 🚀 Why?
-
-When any PC downloads a Steam game, the data is cached locally on the server. All future downloads or updates for that game are pulled at LAN speed from the cache instead of Steam’s servers.
-
-### 🧱 Setup Overview
-
-| Component          | Tool            | Host                  |
-|-------------------|-----------------|-----------------------|
-| Cache system       | `lancache.net`  | Your “master” server  |
-| DNS override       | Manual or DHCP  | Each LAN PC           |
-| Cached games       | SSD/HDD         | Server local storage  |
-
-### 🧰 Prerequisites
-
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) installed on your server
-- Static IP for the server (e.g., `192.168.1.100`)
-
-### 📦 Folder Structure
-
-Create the following folder on your server:
-
-```
-C:\Lancache
-├── lancache-docker-compose.yml
-├── lancache
-├── lancache-dns
-├── lancache-logs
+```powershell
+C:\Windows\System32\Sysprep\sysprep.exe /generalize /shutdown
 ```
 
-### Run The Lancache Server
+> This resets system-specific data but **keeps the local user intact**. No setup wizard (OOBE) will appear on first boot.
 
-Run `lancache-setup.ps1`. This starts your local cache and DNS service.
+---
 
-### 🖥️ Configuring LAN PCs
+## 🖥️ STEP 3 – Capture the Image with Clonezilla
 
-On each LAN PC:
-1. Go to Network Adapter settings > TCP/IPv4 > Properties
-2. Set DNS to:
+1. Create a Clonezilla USB drive
+2. Boot the master PC into Clonezilla
+3. Choose `device-image` → save to:
+   - External USB **or**
+   - Network share (e.g., `\\192.168.1.100\images`)
+4. Save as: `win11-lan-v1`
+5. Shut down when finished
 
-```
-Preferred DNS: 192.168.1.100
-Alternate DNS: 8.8.8.8
-```
+---
 
-This ensures:
-- If Lancache is up, downloads are cached
-- If Lancache is down, the PC still connects to the internet normally
+## 🌐 STEP 4 – Set Up PXE Server
 
-### ⚠️ If You Only Use the Cache DNS
+Use **Tiny PXE Server** (Windows) or **Serva**. On your server:
 
-If you set **only** `192.168.1.100` and the cache is offline, all internet access will break due to DNS failure. Always use a backup DNS (e.g., 8.8.8.8).
+1. Point TFTP root to Clonezilla’s files
+2. Copy `win11-lan-v1` to the `images` directory
+3. Use this PXE config:
 
-## 🧨 STEP 6 – Push Sync to Clients
+   ```cfg
+   label win11-lan-v1
+       menu label Restore LAN Image
+       kernel clonezilla/live/vmlinuz
+       append initrd=clonezilla/live/initrd.img boot=live config noswap edd=on nomodeset ocs_live_run="ocs-sr -e1 auto -e2 -r -j2 -scr -p poweroff restoredisk win11-lan-v1 sda" ocs_live_extra_param="" keyboard-layouts="NONE" ocs_live_batch="yes" locales="en_US.UTF-8" vga=788 fetch=tftp://192.168.1.100/clonezilla/live/filesystem.squashfs
+   ```
 
-1. Download [PSExec](https://docs.microsoft.com/en-us/sysinternals/downloads/psexec) and extract to `C:\Tools\PsExec`.
-2. Edit `push_sync.ps1`:
-   - Update the PC names (e.g., `PC-01` to `PC-08`)
-   - Replace `$adminUser` and `$adminPass` with the credentials you configured on the clients via `master-client-machine-setup.ps1`.
-   - Confirm the share path is correct.
-3. Run `push_sync.ps1` from your server to remotely sync all client machines using PsExec.
+---
 
-## 📅 Updating The Clients Games Going Forward
+## 🚀 STEP 5 – PXE Boot & Reimage Clients
 
-When it’s time to sync:
+1. Enable PXE boot in each client’s BIOS
+2. Power on the PXE server
+3. Boot each LAN PC
+4. The system will auto-download and install the image
+5. PC will shut down when done
+6. Power it on — it’s now **ready to play**
 
-1. Ensure every client PC is powered on, logged in, and connected to the network.
-2. Update `games.jsonc` (add/remove games)
-3. Run `sync_games.ps1` on the server to cache new data
-4. Run `push_sync.ps1` on the server to push changes to all PCs
+---
+
+## 🧯 STEP 6 – Optional: Disable PXE Boot
+
+To prevent accidental reinstalls:
+- Disable PXE boot in BIOS after imaging
+- Or just change boot order to internal drive first
+
+---
+
+## 📅 Monthly Maintenance Flow
+
+1. Power on one LAN PC
+2. Add/remove Steam games
+3. Rerun Sysprep (`/generalize /shutdown`)
+4. Reimage using Clonezilla again as `win11-lan-v2`
+5. Update PXE config
+6. PXE boot the others to refresh
+
+---
+
+## ✅ Result
+
+- Each machine is clean, identical, and fully loaded  
+- Steam games are ready to go  
+- LANUser is logged in automatically  
+- No config needed from end users  
