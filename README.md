@@ -121,4 +121,8 @@ To prevent accidental reinstalls:
 - Each machine is clean, identical, and fully loaded  
 - Steam games are ready to go  
 - LANUser is logged in automatically  
-- No config needed from end users  
+- No config needed from end users
+
+## Extras
+
+- Game hosting https://playit.gg/
