@@ -6,11 +6,11 @@
 
 The (tenative) rigs
 
-PCPartPicker Part List: https://pcpartpicker.com/list/chqKgn
+PCPartPicker Part List: [https://pcpartpicker.com/list/chqKgn](https://pcpartpicker.com/list/Bhjpsp)
 
 - CPU: Intel Core i3-12100F 3.3 GHz Quad-Core Processor
 - Motherboard: ASRock B760M-HDV/M.2 Micro ATX LGA1700 Motherboard
-Memory: TEAMGROUP T-Force Delta RGB 32 GB (2 x 16 GB) DDR5-6000 CL38 Memory
+Memory: TEAMGROUP T-Force Delta RGB 32 GB (2 x 16 GB) DDR5-6400 CL41 Memory
 - Storage: TEAMGROUP MP44L 500 GB M.2-2280 PCIe 4.0 X4 NVME Solid State Drive
 - GPU: GTX 1660 SUPER (Ebay)
 - Case: https://a.co/d/hiJu28u
