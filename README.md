@@ -42,7 +42,10 @@ You power on a LAN PC → it auto-boots into Windows → logs into a preconfigur
 5. **Do Any Final Tuning**
    - Set desktop wallpaper, power settings, disable updates
    - Install any software you want preconfigured
-
+   - Remove watermark
+```powershell
+Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "PaintDesktopVersion" -Value 0
+```
 ---
 
 ## 🧼 STEP 2 – Generalize the Image (Skip OOBE)
