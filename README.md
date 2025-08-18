@@ -113,9 +113,11 @@ To prevent accidental reinstalls:
 1. Power on one LAN PC
 2. Add/remove Steam games
 3. Rerun Sysprep (`/generalize /shutdown`)
-4. Reimage using Clonezilla again as `win11-lan-v2`
+4. Reimage using Clonezilla again as `win11-lan`
 5. Update PXE config
-6. PXE boot the others to refresh
+6. Turn off Secure Boot on PCs in BIOS
+7. PXE boot the others to refresh
+8. Turn on Secure Boot on PCs in BIOS
 
 ---
 
