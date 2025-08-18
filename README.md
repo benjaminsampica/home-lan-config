@@ -18,28 +18,14 @@ You power on a LAN PC → it auto-boots into Windows → logs into a preconfigur
 ## 🧱 STEP 1 – Set Up the Master PC
 
 1. **Install Windows 11 Pro**
-2. **Create a Local Admin User**
+2. **Create The Local User**
 
-   ```powershell
-   net user LANUser SuperSecret123 /add
-   net localgroup Administrators LANUser /add
-   ```
-
-3. **Enable Auto-Login for That User**
-
-   ```powershell
-   $regPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
-   Set-ItemProperty -Path $regPath -Name "DefaultUserName" -Value "LANUser"
-   Set-ItemProperty -Path $regPath -Name "DefaultPassword" -Value "SuperSecret123"
-   Set-ItemProperty -Path $regPath -Name "AutoAdminLogon" -Value "1"
-   ```
-
-4. **Install Steam and Games**
+3. **Install Steam and Games**
    - Install Steam
    - Set the library to `C:\SteamGames`
    - Download and install all LAN games you want included
 
-5. **Do Any Final Tuning**
+4. **Do Any Final Tuning**
    - Set desktop wallpaper, power settings, disable updates
    - Install any software you want preconfigured
    - Remove watermark
@@ -47,6 +33,21 @@ You power on a LAN PC → it auto-boots into Windows → logs into a preconfigur
 Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "PaintDesktopVersion" -Value 0
 ```
 ---
+   - Set background every time
+   ```powershell
+# Set-Wallpaper.ps1
+$wallpaper = "C:\Wallpapers\lan_bg.jpg"
+Add-Type @"
+using System.Runtime.InteropServices;
+public class Wallpaper {
+  [DllImport("user32.dll", SetLastError = true)]
+  public static extern bool SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
+}
+"@
+# 20 = SPI_SETDESKWALLPAPER, 3 = update INI file
+[Wallpaper]::SystemParametersInfo(20, 0, $wallpaper, 3)
+```
+   Save this to `C:\Scripts` and create a shortcut in `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp` with the target `powershell.exe -ExecutionPolicy Bypass -File C:\Scripts\Set-Wallpaper.ps1 `
 
 ## 🧼 STEP 2 – Generalize the Image (Skip OOBE)
 
@@ -105,7 +106,6 @@ Use **Tiny PXE Server** (Windows) or **Serva**. On your server:
 To prevent accidental reinstalls:
 - Disable PXE boot in BIOS after imaging
 - Or just change boot order to internal drive first
-
 ---
 
 ## 📅 Monthly Maintenance Flow
