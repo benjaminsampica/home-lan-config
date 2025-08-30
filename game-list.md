@@ -13,8 +13,8 @@
 - Forts
 - Speed Freeks
 - Black Mesa
+- Quake 3 Arena
 
 ## Research
 - Unreal Tournament 2004
 - Call of Duty
-- Quake 3
