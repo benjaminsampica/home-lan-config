@@ -12,7 +12,7 @@ _The following are always available to play_
 - Quake 3
 
 ## Requires Individual Purchase
-_Many players have some of these but coverage is spotty_
+_Players have some of these already but coverage can be spotty_
 - Quake 2
 - Halo MCC
 - Age of Empires 2
