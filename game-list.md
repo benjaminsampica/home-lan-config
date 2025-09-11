@@ -21,5 +21,5 @@ _Players have some of these already but coverage can be spotty_
 - Black Mesa
 
 ## Research
-- Call of Duty (Elmin)
+- Call of Duty: World At War (Elmin)
 - GoldenEye (Andrew - https://www.geshl2.com/)
