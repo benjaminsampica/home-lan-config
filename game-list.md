@@ -22,4 +22,4 @@ _Players have some of these already but coverage can be spotty_
 
 ## Research
 - Call of Duty (Elmin)
-- GoldenEye (Andrew)
+- GoldenEye (Andrew - https://www.geshl2.com/)
