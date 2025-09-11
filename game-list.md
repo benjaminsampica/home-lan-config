@@ -21,4 +21,5 @@ _Players have some of these already but coverage can be spotty_
 - Black Mesa
 
 ## Research
-- Call of Duty
+- Call of Duty (Elmin)
+- GoldenEye (Andrew)
