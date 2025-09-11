@@ -8,7 +8,7 @@ _The following are always available to play_
 - Just Act Natural
 - Counter-Strike 2
 - Unreal Tournament 2004
-- Warcraft 3
+- Warcraft 3 (with many popular custom maps)
 - Quake 3
 
 ## Requires Individual Purchase
