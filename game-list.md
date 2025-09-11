@@ -4,7 +4,10 @@
 - Crab Game
 - Last Train Outta Wormtown
 - Just Act Natural
-- Counter-Strike
+- Counter-Strike 2
+- Unreal Tournament 2004
+- Warcraft 3
+- Quake 3
 
 ## Requires Individual Purchase
 - Quake 2
@@ -13,8 +16,6 @@
 - Forts
 - Speed Freeks
 - Black Mesa
-- Quake 3 Arena (source port - https://github.com/ec-/Quake3e)
 
 ## Research
-- Unreal Tournament 2004
 - Call of Duty
