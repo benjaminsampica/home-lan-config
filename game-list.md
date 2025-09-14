@@ -22,4 +22,5 @@ _Players have some of these already but coverage can be spotty_
 
 ## Research
 - Call of Duty: World At War (Elmin)
-- GoldenEye (Andrew - https://www.geshl2.com/)
+- GoldenEye (Andrew - https://www.geshl2.com/) - must run at med or below settings.
+- UT99 (https://drive.google.com/file/d/17NVqsrey74oPUPg6EHMYaCjL_EYFNRST/view)
