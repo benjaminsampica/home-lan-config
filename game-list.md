@@ -8,8 +8,10 @@ _The following are always available to play_
 - Just Act Natural
 - Counter-Strike 2
 - Unreal Tournament 2004
+- Unreal Tournament 1999
 - Warcraft 3 (with many popular custom maps)
 - Quake 3
+- GoldenEye
 
 ## Requires Individual Purchase
 _Players have some of these already but coverage can be spotty_
@@ -22,5 +24,3 @@ _Players have some of these already but coverage can be spotty_
 
 ## Research
 - Call of Duty: World At War (Elmin)
-- GoldenEye (Andrew - https://www.geshl2.com/) - must run at med or below settings.
-- UT99 (https://drive.google.com/file/d/17NVqsrey74oPUPg6EHMYaCjL_EYFNRST/view)
